@@ -20,12 +20,12 @@
       enabled: yes
 
    - name: remove default html file
-     ansible.builtin:.lineinfile:
+     ansible.builtin.file:
        path: /usr/share/nginx/html
        state: absent
 
    - name: create html directory
-     ansible.builtin.lineinfile:
+     ansible.builtin.file:
       path: /usr/share/nginx/html
       state: directory
 
@@ -54,4 +54,7 @@
      ansible.builtin.service:
       name: nginx
       state: restarted
+
+
+
 
