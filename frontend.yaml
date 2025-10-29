@@ -20,7 +20,7 @@
       enabled: yes
 
    - name: remove default html file
-     ansible.builtin.lineinfile:
+     ansible.builtin.linein.file:
        path: /usr/share/nginx/html
        state: absent
 
