@@ -25,7 +25,7 @@
        state: absent
 
    - name: create html directory
-     ansible.builtin.lineinfile:
+     ansible.builtin.linein.file:
       path: /usr/share/nginx/html
       state: directory
 
