@@ -14,6 +14,7 @@
       state: present
 
   - name: start and enable nginx
+    become: yes
     ansible.builtin.service:
       name: nginx
       state: started
