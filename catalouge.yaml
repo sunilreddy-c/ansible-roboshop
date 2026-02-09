@@ -1,0 +1,40 @@
+- name: configuure ctalouge component
+  host: catalouge
+  become: yes
+  tasks:
+   - name: disable node js
+     ansible.builtin.module: dnf module disable nodejs -y
+
+   - name: enable node js:20
+     ansible.builtin.command:  dnf module enable nodejs:20 -y
+
+   - name: install node js
+     ansible.builtin.dnf:
+      name: nodejs
+      state: present
+
+   - name: create app dirctory
+     ansible.builtin.file:
+      path: /app
+      state: directory
+
+   - name: create roboshop system user
+     ansible.builtin.user:
+      name: roboshop
+      shell: /sbin/nologin
+      system: true
+      home: /app
+
+  
+   - name: download catalouge code
+     ansible.builtin.get_url:
+      url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
+      dest: /tmp/catalogue.zip
+
+   - name: unarchive download code 
+     ansible.builtin.unarchive:
+      src: /tmp/catalogue.zip
+      dest: /app
+      remote_src: yes
+
+
