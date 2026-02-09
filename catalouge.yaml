@@ -2,7 +2,7 @@
   hosts: catalouge
   become: yes
   tasks:
-   - name: disable node js
+   - name: disable default nodejs
      ansible.builtin.module: dnf module disable nodejs -y
 
    - name: enable node js:20
